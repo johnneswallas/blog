@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tudo sobre Google Glass</title>
+    <link rel="Stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="_css/form.css">
+
+</head>
+<script src='_javascript/funcoes.js'></script>
+<script>
+    function FinalizarPedido() {
+        let qdt = Number(document.querySelector('input#nmbQuant').value)
+        if(qdt >=1){
+            alert('Seu pedido foi feito com sucesso!')
+        }       
+    }
+    function Calcular() {
+        let qdt = Number(document.querySelector('input#nmbQuant').value)
+        document.querySelector('input#txtTot').value= `${(qdt*2500).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`   
+    }
+</script>
+
+<body>
+    <div id="interface">
+        <header id="cabecalho">
+            <hgroup>
+                <h1>Google Glass</h1>
+                <h2>A revolução do Google está chegando</h2>
+            </hgroup>
+            <img id="icone" src="_imagens/contato.png" alt="">
+
+            <nav id="menu">
+                <h1>Menu Principal</h1>
+                <ul type="">
+                    <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a
+                            href="index.html">Home</a></li>
+                    <li onmouseover="mudaFoto('_imagens/especificacoes.png')"
+                        onmouseout="mudaFoto('_imagens/contato.png')"><a href="specs.html">Especificações</a></li>
+                    <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a
+                            href="fotos.html">Fotos</a></li>
+                    <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+                        <a href="multimidia.html">Multimídia</a>
+                    </li>
+                    <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a
+                            href="fale-conosco.html">Fale conosco</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="corpo-full">
+            <article id="noticia-principal">
+                <header id="cabecalho-artigo">
+                    <hgroup>
+                        <h3>Fale Conosco >&nbsp; Contato</h3>
+                        <h1>Formulário de Contato</h1>
+                        <h2>por John Wallas </h2>
+                        <h3 class="h3Direita">Atualizado em 30/Janeiro/2022</h3>
+                    </hgroup>
+                </header>
+            </article>
+        </section>
+
+
+        <form method="post" id="frmContato" action="mailto:johnnes.wallas@gmail.com" oninput="Calcular();">
+
+            <fieldset id="usuario">
+                <legend>Identificação do Usuário</legend>
+                <p> <label for="txtNome">Nome:</label> <input type="text" name="txtNome" id="txtNome" size="20"
+                        maxlength="30" placeholder="Nome Completo"></p>
+                <p><label for="txtSenha">Senha:</label> <input type="password" name="txtSenha" id="txtSenha" size="8"
+                        maxlength="8" placeholder="8 Digitos"></p>
+                <p><label for="txtEmail">E-mail:</label> <input type="email" name="txtEmail" id="txtEmail" size="20"
+                        maxlength="40" placeholder="Digita o seu E-mail"></p>
+                <fieldset id="sexo">
+                    <legend>Sexo</legend>
+                    <input type="radio" name="rdbSexo" id="rdbMasc" checked><label for="rdbMasc">Masculino</label><br>
+                    <input type="radio" name="rdbSexo" id="rdbFen"><label for="rdbFen">Feminino</label>
+                </fieldset>
+                <p>Data de Nascimento: <input type="date" name="dtnascimento" id="dtnascimento"></p>
+            </fieldset>
+            <fieldset id="endereco">
+                <legend>Endereço do Usuário</legend>
+                <p><label for="txtRua">Logradouro:</label><input type="text" name="txtRua" id="txtRua" size="15"
+                        maxlength="80" placeholder="Rua; Av;"></p>
+                <p><label for="nmbNumero">Número:</label><input type="number" name="nmbNumero" id="nmbNumero" size="5"
+                        maxlength="5" placeholder="Número da rua;"></p>
+                <p><label for="txtEstado">Estado:</label><Select name="txtEstado" id="txtEstado">
+                        <optgroup label="Regiao Suldeste">
+                            <option value="MG">Minas Gerais</option>
+                            <option value="SP" selected>São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                        </optgroup>
+                        <optgroup label="Regiao Centro-Oeste">
+                            <option value="MT">Mato Grosso</option>
+                        </optgroup>
+                    </Select></p>
+                <p><label for="txtCidade">Cidade:</label>
+                    <input type="text" name="txtCidade" id="txtCidade" size="20" maxlength="20" placeholder="Cidade" list="cidade">
+                    <datalist id="cidade">
+                        <option value="Rio de Janeito"></option>
+                        <option value="Nova Iguaçu"></option>
+                        <option value="Niterói"></option>
+                        <option value="São Paulo"></option>
+                        <option value="Belo Horizonte"></option>
+                        <option value="Ribeirão das Neves"></option>
+                    </datalist>
+                </p>
+            </fieldset>
+            <fieldset id="mensagem">
+                <legend>Mensagem do Usuário</legend>
+                <p><label for="rngUrgencia">Grau de Urgência:</label> Mín<input type="range" name="rngUrgencia" id="rngUrgencia" min="0" max="10" step="1">Max</p>
+                <p><label for="txtMensagem">Mensagem:</label><textarea name="txtMensagem" id="txtMensagem" cols="30" rows="10" placeholder="Deixe sua menssagem aqui..."></textarea></p>
+            </fieldset>
+
+            <fieldset id="pedido">
+                <legend>Quero um Google Glass</legend>
+                <p> <input type="checkbox" name="chbQuero" id="chbQuero" checked>
+                    <label for="chbQuero"></label>                
+                    Gostaria de adquirir um Google Glass quando disponível
+                </p>
+                <p><label for="clCor">Cor:</labelf><input type="color" name="clCor" id="clCor" value="#0000ff"></p>
+                <p><label for="nmbQuant">Quantidade:</label><input type="number" name="nmbQuant" id="nmbQuant" value="1" max="10" min="1"></p>
+                <p>Preço Total: R$ <input type="text" name="txtTot" id="txtTot" readonly placeholder="Valor Total"></p>
+                <input type="button" value="Enviar" onclick="FinalizarPedido()">
+            </fieldset>
+        </form>
+        <footer id="rodape">
+            <p>Copyright &copy;&reg; 2022 - by John Wallas<br>
+                <a href="http://instagram.com/john_wallass" target="_blank">Intagram | </a>
+                <a href="http://github.com/johnneswallas" target="_blank">GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
